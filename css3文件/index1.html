@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="wrap_Img_sub" style="border: 1px solid red;height:200px;top:30px">
+			
+		</div>
+		<script type="text/javascript">
+//			var wrap_Img_sub=document.getElementById("wrap_Img_sub").style.top="300px"
+//		   	
+			var isPhone6p = (function(){
+	    	var h=window.innerHeight,w=window.innerWidth,useragent = navigator.userAgent.toLowerCase(),isP6p = false;
+	     
+		    　　if(useragent.match(/mobile/i)!==null && useragent.match(/iphone/i)!==null && ( h>w ? (Math.abs(w-414)<10 && h<=736) : (Math.abs(w-736)<10) && h<=414)) isP6p = true;
+		   if(isP6p=true){
+		   	var wrap_Img_sub=document.getElementById("wrap_Img_sub").style.top="300px"
+		   }
+//		   	
+//		   		
+		   		
+		    　return isP6p;
+	    })();
+		</script>
+	</body>
+</html>

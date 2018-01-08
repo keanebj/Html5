@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.wrap{
+				margin-bottom: 500px;
+			}
+			.wrap >div{
+				border-radius: ;
+				border-image: ;
+				box-shadow: ;
+				margin-top: 20px;
+				text-align: center;
+			}
+			
+			.radius{
+				width: 100px;
+				height:20px;
+				border-radius: 10px;
+				border: 2px solid sienna;
+			}
+			
+			.bor_image{
+				width: 100px;
+				border: 20px solid transparent;
+				border-image: url(IMG/2.jpg) 15 30 round;
+			}
+			/*
+			 * box-shadow: 
+			 * h-shadow  水平		
+			 *  v-shadow 垂直
+			 *  blur     模糊距离
+			 * 	spread   阴影的尺寸
+			 *  color    颜色
+			 *  inset;   位置
+			 
+			 * */
+			.shaow{
+				width: 100px;
+				height: 20px;
+				border-radius: 10px;
+				/*box-shadow: 5px 5px 5px #999;*/
+				/*box-shadow: 0px 0px 20px #999;*/
+				box-shadow: 0px 0px 10px #999 inset;
+			}
+			
+			.back_img{
+				width: 150px;
+				height: 100px;
+				background: url(IMG/2.jpg);
+				background-size: 100%;
+			}
+			/*
+			 background-clip:
+				border-box  背景包括边框线
+				padding-box 背景包括padding 值
+				content-box 背景只包括内容
+			 * 
+			 * */
+			.back-clip{
+				width: 150px;
+				padding: 10px;
+				border: 5px dashed #A0522D;
+				background-color: yellow;
+				/*background-clip: border-box;
+				background-clip: content-box;*/
+				background-clip: padding-box;
+			}
+			
+			.test_shaow{
+				font-size: 50px;
+				font-weight: bold;
+				text-shadow: 5px 5px 3px #FFFF00;
+			}
+			
+			.word-wrap{
+				width: 150px;
+				border: 1px solid #A0522D;
+				word-wrap:break-word;
+		
+			}
+				/*	
+				translate()
+				rotate()
+				scale()
+				skew()
+				matrix()*/
+				
+			.move{
+				width: 100px;
+				height: 100px;
+				background: #FFFF00;
+				/*transform: rotate(30deg);// 旋转角度
+				/*transform: translate(200px,50px);*/
+				/*transform: matrix();*/
+				transform: scale(2,2);
+				transform: skew(30deg,30deg);
+			}	
+		</style>
+		<script type="text/javascript" src="js/jquery.js">
+//			var arr=[23,5,5,5,654,64,56,5]
+//			arr.map((0)=>{
+//				console.log(0)
+//			})
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="radius">圆角</div>
+			<div class="bor_image">边框图片</div>
+			<div class="shaow">阴影边框</div>
+			<div class="back_img">背景</div>
+			<div class="back-clip">和手机看到回复可视对讲发货速度会计法含税单价翻山倒海发送电风扇的</div>
+			<!--阴影-->
+			<div class="test_shaow">这是一段阴影字体</div>
+			<div class="word-wrap">
+				经适房的进口水果护肤的考虑gdfgsfsdfsdfgsdff
+				国家时代峰峻是个好地方接gdfgsdgdfgdfgdf口和公
+				司电饭锅少说点公交卡是的风格是否打开价格是否打开格式发
+				sdgdfgdffffffffffffffffffffffffffffffffffff
+				sdgdfgdffffffffffffffffffffffffffffffffffff
+			</div>
+			
+			<div class="move">
+				
+			</div>
+			
+		</div>
+	</body>
+</html>

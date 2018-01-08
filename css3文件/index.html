@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"  name="viewport" />
+		<title></title>
+		<style>
+				* {
+					-webkit-box-sizing: border-box;
+					box-sizing: border-box;
+					padding: 0;
+					margin: 0;
+				}
+				
+				.wrap_w {
+					max-width: 750px;
+					margin: 0 auto;
+				}
+				
+				.wrap_Img {
+					width: 100%;
+				}
+				
+				.wrap_Img img {
+					width: 100%;
+				}
+				
+				.wrap_Img_sub {
+					position: relative;
+				}
+				
+				.wrap_Img .wrap_Img_sub {
+					position: absolute;
+					/*top: 180%;*/
+					top: 1100px;
+					display: flex;
+					left: 15%;
+					right: 15%;
+					justify-content: center;
+				}
+				
+				.wrap_Img_sub span {
+					flex: 1;
+					padding: 0px 10px;
+					max-width: 250px;
+				}
+				
+				.wrap_main img {
+					width: 100%;
+				}
+				
+				img {
+					vertical-align: top;
+					display: block
+				}
+				
+				@media screen and (max-width:768px) {
+					.wrap_w {
+						width: 100%!important;
+					}
+					.wrap_Img {
+						width: 100%;
+					}
+					.wrap_Img img {
+						width: 100%;
+					}
+					.wrap_Img_sub {
+						position: relative;
+					}
+					.wrap_Img .wrap_Img_sub {
+						position: absolute;
+						top: 545px;
+						display: flex;
+						left: 15%;
+						right: 15%;
+						justify-content: center;
+					}
+					.wrap_Img_sub span {
+						flex: 1;
+						padding: 0px 10px;
+					}
+					.wrap_Img_sub span.ios {}
+					.wrap_Img_sub span.android {}
+					.wrap_main img {
+						width: 100%;
+					}
+					img {
+						vertical-align: top;
+						display: block
+					}
+				}
+			</style>
+	</head>
+
+	<body>
+
+		<div class="wrap_w">
+			<div class="wrap">
+				<div class="wrap_Img">
+					<img src="images/header.png" />
+					<div class="wrap_Img_sub">
+						<span class="android">
+							<a href="http://m.shouji.360tpcdn.com/171120/c264cc639d03f4ab49d7db19165cc4ea/com.pdmi.studio.newmedia.cpp_3.apk"><img src="images/appandroid.png" /></a>
+						</span>
+						<span class="ios">
+							<a href="https://www.pgyer.com/YVie"><img src="images/appios.png" /></a>
+						</span>
+					</div>
+				</div>
+				<div class="wrap_main">
+					<img src="images/appmian1.png" />
+					<img src="images/addmain.png" />
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
