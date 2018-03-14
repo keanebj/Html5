@@ -1,0 +1,145 @@
+<z:config type="ArticleList"  name="文章列表页"  />
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<!--包含通用样式-->
+		<cms:include file="include.template.html"  />
+		<title>${Catalog.name}</title>
+		<meta name="description"  content="${Site.Description}"  />
+	</head>
+	<body class="bg-white">
+	
+		<!-- 包含页头 -->
+	
+		<cms:include file="header.template.html">{ZCMS:文件包含}</cms:include>
+		
+			<div class="container z-container">
+			
+				<div class="row">
+				
+					<!-- 导航及标题 -->
+				
+					<div class="col-md-8">
+					
+						<div class="p-sm m-t-xs text-left b-b b-light">
+						
+							<cms:position />
+							</div>
+						
+							<!-- 子栏目 -->
+						
+							<cms:catalog id="${Catalog.ID}"  level="Child">
+							
+								<z:if condition="${Total>0}">
+								
+									<div class="row m-sm m-t-lg">
+									
+										<z:list>
+										
+											<div class="col-xs-4 col-sm-3 col-md-2 b-a b-light p-xs text-center">
+											
+												<a href="${Catalog.Link}">${Catalog.Name}</a>
+													</div>
+													</z:list>
+										</div>
+										</z:if>
+										</cms:catalog>
+									
+										<!-- 列表 -->
+									
+										<div class="m-md">
+										
+											<div class="font14">
+											
+												<ul class="list-unstyled lh20">
+												
+													<cms:article level="CurrentAndChild"  loadcontent="true"  page="true"  pagesize="10">
+													
+														<z:list>
+														
+															<li>
+																<a class="h4 bold"  href="${Article.Link}"  style="${Article.TitleStyle}">${Article.Title}</a>
+																
+																	<div class="m-b-md">
+																	
+																		<z:if condition="${Article.LogoFile}">
+																		
+																			<div class="media-left">
+																			
+																				<a href="${Article.Link}"><img class="media-object m-t-xs m-b-md m-l-sm"  src="${imageSize(Article.LogoFile,100,80)}"               border="0"  /> </a>
+																					</div>
+																					</z:if>
+																				
+																					<div class="media-body">
+																					
+																						<div class="${Article.LogoFile?'':'m-l-sm'}">${(charWidth(trim2(clearHtmlTag(Article.Content)),220,'...'))}</div>
+																						
+																							<div class="pull-right font-12"  style="color: #aaa">
+																								[
+																								<z:if condition="${Article.CatalogID!=Catalog.ID}">
+																								
+																									<a href="${catalog(Article.CatalogID).Link}"> ${catalog(Article.CatalogID).Name}</a>&nbsp;&nbsp;</z:if>
+																										<span>${Article.PublishDate}</span> ]
+																										</div>
+																										</div>
+																										</div>
+															</li>
+															</z:list>
+														</cms:article>
+														</ul>
+													
+														<div class="m-t-lg m-g-lg text-center">
+														
+															<cms:pagebar mode="V3"></cms:pagebar>
+																</div>
+																</div>
+																</div>
+																</div>
+															
+																<cms:article level="Current"  type="recent"  count="200">
+																
+																	<div class="conList square"  style="display:block">
+																	
+																		<z:list>
+																		
+																			<div class="news-list-item">
+																			
+																				<div class="news-list-img">
+																				
+																					<a href="${Article.Link}"  target="_blank">
+																						<img src="${imageSize(Article.LogoFile,300,300,'fit')}"  alt="${charwidth(Article.Title,34,' ')}"></a>
+																							</div>
+																						
+																							<h2 class="news-list-item-title">
+																							
+																								<a href="${Article.Link}"  target="_blank">${charwidth(Article.Title,42,'…')}</a>
+																									</h2>
+																								
+																									<p class="news-list-item-info">
+																									
+																										<span class="news-list-item-info-catalog">${Article.Source}</span>
+																											</p>
+																											</div>
+																										
+																											<!--</z:else>-->
+																											</z:list>
+																		</div>
+																		</cms:article>
+																	
+																		<div class="Nav_tittle">最新动态</div>
+																			<!-- 右侧 -->
+																		
+																			<div class="col-md-4">
+																			
+																				<cms:include file="right.template.html">{ZCMS:文件包含}</cms:include>
+																					</div>
+																					</div>
+																					</div>
+																				
+																					<!-- 包含页尾 -->
+																				
+																					<cms:include file="footer.template.html">{ZCMS:文件包含}</cms:include>
+																						</body>
+
+																						</html>

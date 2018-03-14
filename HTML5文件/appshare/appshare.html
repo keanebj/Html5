@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/appshare.css" />
+	</head>
+
+	<body>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0"></script>
+			
+		</script>
+		<div id="wrap">
+			<div class="header">
+				<img src="img/header.png" />
+			</div>
+			<div class="main" v-show="dataTrue">
+				<div class="mian_video">
+					<video id="playId" width="100%" height="180" :src="videourl" :poster="posterUrl">
+					</video>
+					<div class="video-back"><img src="img/player2.png" @click="playBtn"></div>
+				</div>
+
+				<div class="add">
+					<div class="title" v-text="title"></div>
+					<div class="time" v-text="dateTime"></div>
+					<div class="count_list">
+						<dl>
+							<dt><img :src="studioavatar" onerror="this.src='img/logo.png'" class="logo_img"/></dt>
+							<dd v-text="studioname"></dd>
+						</dl>
+
+						<!--<dl>
+						<dt class="img_top"><img src="../../assets/preview/play.png" class="logo_img logo_item"/></dt>
+						<dd>{{playNum}}播放</dd>
+					</dl>-->
+						<dl>
+							<dt class="img_top"><img src="img/comment.png" class="logo_img logo_item"/></dt>
+							<dd v-text="commentNum" class="commentNum" style="margin-left: 0px;"></dd>
+						</dl>
+						<!--<span><img src=""/>{{columnid || 0}}条评论</span>-->
+					</div>
+				</div>
+
+				<ul class="list">
+					<li v-for="item in relativet" class="list_item" @click="getJsonData(item.articleLink)">
+
+						<div class="list_right">
+							<img :src="item.shareImage" />
+							<span class="playIcon"><img src="img/pIcon.png"/></span>
+							<span class="list_time" v-text="item.duration"></span>
+						</div>
+						<div class="list_left">
+							<div class="list_title" v-text="item.title">
+							</div>
+							<div class="address_playcount">
+								<span class="address" v-text="item.publish.name"></span>
+								<!--<span class="address">{{item.playNum==0 ? "统计中":item.playNum}}播放量</span>-->
+							</div>
+						</div>
+					</li>
+					<!--<div v-show="!relativet">
+				暂无更多数据
+			</div>-->
+				</ul>
+
+			</div>
+
+			<div v-show="!dataTrue" class="dataNo">
+				<span><img src="img/Group6.svg"/></span>
+			</div>
+			<div class="footer">
+
+			</div>
+
+			<div class="download" v-show="delbtn">
+				<span class="downItem downtitle"><a href="http://mb.dev.hubpd.com/movie/rmspdown/" target="_blank"><img src="img/footer.png"/></a></span>
+				<span class="del"><img src="img/del.svg" @click="delfun"/></span>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script src="js/appshare.js" type="text/javascript" charset="utf-8"></script>
+		
+	</body>
+
+</html>
+

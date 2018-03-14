@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="238px" height="74px" viewBox="0 0 238 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="92" y="34" width="61" height="40"></rect>
+        <rect id="path-2" x="90" y="27" width="65" height="43"></rect>
+        <rect id="path-3" x="86" y="3" width="73" height="63"></rect>
+        <rect id="path-4" x="86" y="3" width="73" height="17"></rect>
+        <rect id="path-5" x="0" y="0" width="7" height="9" rx="1"></rect>
+        <rect id="path-6" x="12" y="0" width="7" height="9" rx="1"></rect>
+        <rect id="path-7" x="25" y="0" width="7" height="9" rx="1"></rect>
+        <rect id="path-8" x="38" y="0" width="7" height="9" rx="1"></rect>
+        <rect id="path-9" x="50" y="0" width="7" height="9" rx="1"></rect>
+        <rect id="path-10" x="0" y="31" width="39" height="2"></rect>
+        <rect id="path-11" x="199" y="31" width="39" height="2"></rect>
+        <rect id="path-12" x="58" y="24" width="15" height="2" rx="1"></rect>
+        <rect id="path-13" x="58" y="39" width="15" height="2" rx="1"></rect>
+    </defs>
+    <g id="澎湃新闻-copy-6" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-69.000000, -220.000000)" opacity="0.8">
+        <g id="Group-4" transform="translate(69.000000, 220.000000)">
+            <g id="Rectangle-7">
+                <use fill="#F7F7F7" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <rect stroke="#979797" stroke-width="1.5" x="92.75" y="34.75" width="59.5" height="38.5"></rect>
+            </g>
+            <g id="Rectangle-7">
+                <use fill="#F7F7F7" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <rect stroke="#979797" stroke-width="1.5" x="90.75" y="27.75" width="63.5" height="41.5"></rect>
+            </g>
+            <g id="Rectangle-7">
+                <use fill="#F7F7F7" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <rect stroke="#979797" stroke-width="1.5" x="86.75" y="3.75" width="71.5" height="61.5"></rect>
+            </g>
+            <rect id="Rectangle-7" fill="#EBEDEF" x="87.5" y="5" width="70" height="17"></rect>
+            <g id="Rectangle-7">
+                <use fill="#FA755D" fill-rule="evenodd" xlink:href="#path-4"></use>
+                <rect stroke="#979797" stroke-width="1.5" x="86.75" y="3.75" width="71.5" height="15.5"></rect>
+            </g>
+            <path d="M87.5,14.5 L157.5,14.5" id="Line" stroke="#979797" stroke-width="1.5" stroke-linecap="square" stroke-dasharray="4,2"></path>
+            <g id="Group-5" transform="translate(94.000000, 0.000000)">
+                <g id="Rectangle-8">
+                    <use fill="#F8F8F8" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    <rect stroke="#979797" stroke-width="1" x="0.5" y="0.5" width="6" height="8" rx="1"></rect>
+                </g>
+                <g id="Rectangle-8">
+                    <use fill="#F8F8F8" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    <rect stroke="#979797" stroke-width="1" x="12.5" y="0.5" width="6" height="8" rx="1"></rect>
+                </g>
+                <g id="Rectangle-8">
+                    <use fill="#F8F8F8" fill-rule="evenodd" xlink:href="#path-7"></use>
+                    <rect stroke="#979797" stroke-width="1" x="25.5" y="0.5" width="6" height="8" rx="1"></rect>
+                </g>
+                <g id="Rectangle-8">
+                    <use fill="#F8F8F8" fill-rule="evenodd" xlink:href="#path-8"></use>
+                    <rect stroke="#979797" stroke-width="1" x="38.5" y="0.5" width="6" height="8" rx="1"></rect>
+                </g>
+                <g id="Rectangle-8">
+                    <use fill="#F8F8F8" fill-rule="evenodd" xlink:href="#path-9"></use>
+                    <rect stroke="#979797" stroke-width="1" x="50.5" y="0.5" width="6" height="8" rx="1"></rect>
+                </g>
+            </g>
+            <g id="Rectangle">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-10"></use>
+                <rect stroke="#979797" stroke-width="1" x="0.5" y="31.5" width="38" height="1"></rect>
+            </g>
+            <g id="Rectangle">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-11"></use>
+                <rect stroke="#979797" stroke-width="1" x="199.5" y="31.5" width="38" height="1"></rect>
+            </g>
+            <polyline id="Path-5" stroke="#979797" points="137 39 140 42.5 143 39 145.5 41.5 148 39"></polyline>
+            <polyline id="Path-5" stroke="#979797" transform="translate(101.500000, 40.750000) scale(-1, 1) translate(-101.500000, -40.750000) " points="96 39 99 42.5 102 39 104.5 41.5 107 39"></polyline>
+            <g id="Rectangle-2">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-12"></use>
+                <rect stroke="#979797" stroke-width="1" x="58.5" y="24.5" width="14" height="1" rx="0.5"></rect>
+            </g>
+            <g id="Rectangle-2">
+                <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-13"></use>
+                <rect stroke="#979797" stroke-width="1" x="58.5" y="39.5" width="14" height="1" rx="0.5"></rect>
+            </g>
+            <polygon id="Path-6" stroke="#979797" fill="#D8D8D8" points="39 39.5092561 44.0972123 39.5092561 49.5441557 44.9561994 61.0000837 44.9561994 61.0000837 19.9949934 48.9897953 19.9949934 43.7367989 25.2479899 39 25.2479899"></polygon>
+            <polygon id="Path-6" stroke="#979797" fill="#D8D8D8" transform="translate(188.000042, 32.480603) scale(-1, 1) translate(-188.000042, -32.480603) " points="177 39.5142627 182.097212 39.5142627 187.544156 44.961206 199.000084 44.961206 199.000084 20 186.989795 20 181.736799 25.2529965 177 25.2529965"></polygon>
+            <circle id="Oval" stroke="#979797" fill="#F8E71C" cx="51.5" cy="32.5" r="2.5"></circle>
+        </g>
+    </g>
+</svg>
