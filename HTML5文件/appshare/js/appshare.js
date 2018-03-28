@@ -56,9 +56,9 @@ new Vue({
 			var  That=this;
 			this.$http.get('http://mb.dev.hubpd.com/xmt/api/appshare/' + id + "?catalogid=" + catalogid).then(function(response) {
 					if(response.status == 200) {
+						console.log(response)
 						That.dataStatus = response.status
 						That.getJsonData(response.body.path)
-
 					} else {
 						That.$Notice.error({
 							title: response.data.message,

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- import Vue.js -->
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- import stylesheet -->
+		<link rel="stylesheet" href="css/iview.css">
+		<!-- import iView -->
+		<script src="js/iview.min.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0"></script>
+		
+		<style type="text/css">
+			.wrap{
+				 max-width: 750px;
+   				 margin: 0 auto;
+			}
+			.main{
+				/*min-width: 650px;*/
+				min-height: 500px;
+    			/*border-bottom: 1px solid #ccc; */
+			}
+			/*.content_left{
+				display: flex;
+			}
+			
+			.content_left img{
+				width: 200px;
+				margin: 0 auto;
+				padding: 10px;
+			}
+			
+			.content{
+				display: flex;
+				margin: 0 auto;
+			}
+			
+			.contentItem{
+				flex: 1;
+			}*/
+			
+			.title{
+				text-align: center;
+			    margin: 30px;
+			    font-size: 32px;
+			}
+			
+			.submitBtn{
+				display: flex;
+			    flex-direction: column;
+			    align-content: center;
+			    justify-content: space-evenly;
+			    flex: 1;
+			}
+			
+			.footer{
+				position: fixed;
+    			bottom: 30px;
+    			margin: 0 30px;
+			}
+			
+			.footer_title{
+				line-height: 40px;
+				font-weight: bold;
+			}
+			
+			.ivu-i-input{
+				width: auto;
+			}
+			
+			.ivu-input{
+				width: auto !important;
+			}
+			.contentItem{
+			    display: flex;
+				align-items: center;
+				margin: 10px auto;
+				min-width: 300px;
+				width: 320px;
+			}
+			
+			.titleItem{
+				width: 100px;
+    			text-align: right;
+			}
+			
+			.btnInfo{
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="wrap">
+			<template>
+			<div class="main">
+				<div class="title">注册信息</div>
+				<div class="content">
+					<div class="pname contentItem">
+						<label class="titleItem">省:</label>
+						<i-input type="text"  placeholder="Username"></i-input>
+					</div>
+					<div class="pname contentItem">
+						<label class="titleItem">市：</label>
+						<i-input type="text"  placeholder="Username"></i-input>
+					</div>
+					
+					<div class="pname contentItem">
+						<label class="titleItem">区县：</label>
+						<i-input type="text"  placeholder="Username"></i-input>
+					</div>
+					
+					<div class="pname contentItem">
+						<label class="titleItem">学校名称：</label>
+						<i-input type="text"  placeholder="Username"></i-input>
+					</div>
+					
+					<div class="pname contentItem">
+						<label class="titleItem">班级名称：</label>
+						<i-input type="text"  placeholder="Username"></i-input>
+					</div>
+					
+					<div class="pname contentItem">
+						<label class="titleItem">邀请码：</label>
+						<i-input type="text"  placeholder="Username"></i-input>
+					</div>
+					
+					
+					<div class="pname contentItem">
+						<label class="titleItem">注册类型：</label>
+						<i-input type="text"  placeholder="(例如，班主任，学校管理员，学生)"></i-input>
+						
+					</div>
+					
+					<div class="pname contentItem">
+						<label class="titleItem">邀请类别：</label>
+						<i-input type="text"  placeholder="Username"></i-input>
+					</div>
+					
+					<div class="pname contentItem">
+						<label class="titleItem">用户名：</label>
+						<i-input type="text"  placeholder="请输入用户名"></i-input>
+					</div>
+					 
+					<div class="pname contentItem">
+						<i-button type="info" class="btnInfo">提交</i-button>
+					</div>
+				</div>				
+			</div>
+			
+			</template>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:".wrap",
+				data:function(){
+					return {
+						msg:"nihao",
+						pname:"",
+						cname:"",
+						schname:"",
+						schcode:"",
+						classname:"",
+						classcode:"",
+						invitation:"",
+						registerType:"",
+						invitationType:""
+						
+					}
+				},
+				created:function(){
+					var Request = this.getRequest()
+				},
+				mounted:function(){},
+				methods:{
+					getRequest: function() {
+						var str = window.location.search; //  ?userName=zhanghao&userId=123
+						if(str) {
+							var url = str.substr(1),
+								arr = url.split('&'),
+								len = arr.length,
+								i = 0,
+								request = {};
+							//        ["userName=zhanghao", "userId=123"]
+							for(; i < len; i++) {
+								request[arr[i].split('=')[0]] = arr[i].split('=')[1];
+								//           ["userName", "zhanghao"]  ["userId", "123"]
+							}
+							return request; //{userName: "zhanghao", userId: "123"}
+						} else {
+							console.log('没有传递参数');
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

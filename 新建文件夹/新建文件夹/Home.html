@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" href="css/base.css" />
+    <link href="css/common.css" rel="stylesheet" />
+	<script src="js/jquery-1.7.2.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+</head>
+<body>
+ <div class="wrapper">
+        <!--公共头部-->
+        <div class="container head">
+            <a class="logo_a">
+                <img src="img/logo.png" />
+            </a>
+            <button class="welcomeName LogOut">LogOut</button>
+            <span class="welcomeName">Welcome <span class="customerName"></span></span>
+        </div>
+    <!--导航-->
+    <div class="hadAct nav headNav">
+		<ul>
+			<li><a href="#">Home</a></li>
+   			<li><a href="Repair.html">Repair Reservation</a></li>
+		    <li><a href="ServicesTicket.html">My Service List</a></li>
+   		    <li><a href="Product.html">My Product</a></li>
+			<li><a href="PersonalCenter.html">Personal Center</a></li>
+	   	</ul>
+		</div>
+		<!--logo-->
+		<div class="login">
+			<img src="img/loginimg.png" />
+		</div>
+		<!--中间提示部分-->
+		<div class="container ServicesListDiv">
+			<div class="ListBox titleBox" style="display: block;">
+			   <ul>
+   			        <li><a href="Repair.html">Repair Reservation</a></li>
+		    	    <li><a href="ServicesTicket.html">My Service List</a></li>
+   		    	    <li><a href="Product.html">My Product</a></li>
+                    <li><a href="PersonalCenter.html">Personal Center</a></li>
+               </ul>
+			</div>
+		</div>
+     </div>
+	<!--底部-->
+	<div class="footer">
+      <p>Copyright 2008-2016 Lenovo.All rights reserved.Beijing ICP 11035381.Beijing Public Security No.110108007970. </p>
+	</div>
+	</body>
+</html>
+
+<script>
+    $(function () {
+        var customerEmail = $.cookie("email");
+        $(".customerName").text(customerEmail);
+        //退出按钮
+        $(".LogOut").click(function () {
+            $.ajax({
+                type: "Post",
+                url: "../../EN/Handler/Person.ashx",
+                data: {
+                    method: "LogOut",
+                },
+                success: function (data) {
+                    console.log(data);
+                    var res = JSON.parse(data);
+                    if (res.Flag == 1) {
+                        window.location.href = "Login.html";
+                        $.cookie("email", null);
+                    }
+                }
+            })
+        });
+    });
+  
+</script>

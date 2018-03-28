@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+	    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<script src="js/jquery-1.7.2.min.js"></script>
+        <script src="js/JquerySession.js"></script>
+        <script src="js/jquery.cookie.js"></script>
+		<script src="js/Register.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+				<!--公共头部-->
+                <div class="container">
+                  <a class="logo_a">
+                  	<img src="img/logo.png"/>
+                  </a>
+                  <button class="welcomeName LogOut">LogOut</button>
+           <!-- <span class="welcomeName">Welcome to 1234@qq.com!</span>-->
+            	</div>
+            	<!--进度条-->
+            	<div class="ProgressBar">
+            	    <ul>
+	                  	<li><img src="img/6.png"/>
+	                  		<span>1、Register Lenovo Account</span>
+	                  	</li>
+	                  	<li class="second_arr"><img src="img/writeArr.png"/>
+	                  		<span>2、Complete Personal Information</span>
+	                  	</li>
+	                  	<li class="second_arr">
+	                  		<span class="threeSpan">3、Resgister successfully,start to enjoy the exclusive commercial services </span>
+	                  	</li>
+                    </ul>
+            	</div>
+			   	<!--已有账号-->
+			   	<div class="hadAct">
+			   		<p>Had an account already?
+			   			<span><a href="Login.html" class="LinkA">Login Now</a></span>
+			   		</p>
+			   	</div>
+				<!--注册框-->
+				<div class="registerBox">
+					<ul>
+						<li>
+							<span>Email:</span>
+							<input type="text" id="RegisterEmail"/>
+						</li>
+						<li>
+							<span>Password:</span>
+							<input type="password" id="RegisterPsd"/>
+						</li>
+						<li>
+							<!--<p>The password should be 8-20 digits and contains at least one number ,one letter and one character.</p>-->
+							<p class="warningMsg"></p>
+						</li>
+						<li>
+							<span>Verification code:</span>
+							<input type="text" class="VerificaCode" id="txtEmailValidateCode"/>
+                            <img src="../../business_website/dev/LoginAndRegister/Images.aspx" class="VerificaCodeimg" id="Img2" />
+                            
+						</li>
+						<li>
+                            <a style="display:block" id="RegisterLoger"><button id="RegisterLogin">Register</button></a>
+							<p>click register means you agree legal  terms of use and privacy policy of Lenovo.</p>
+						</li>
+						
+						<li>
+							<p class="registerMsg" style="color:red"></p>
+						</li>
+						
+					</ul>
+				</div>
+                          <!--登录信息过期-->
+        <div id="LoginOut" style="padding:40px; display:none;">
+            <p>Login information is expired, please login again</p>
+            <p>
+                <a href="Login.html"><button id="loginBtn2" style="float: none;display: inline-block;">Yes</button> </a>
+            </p>
+        </div>
+            </div>
+				<!--底部-->
+				<div class="footer">
+					<p>Copyright 2008-2016 Lenovo.All rights reserved.Beijing ICP 11035381.Beijing Public Security No.110108007970. </p>
+					<p></p>
+				</div>
+		
+	</body>
+</html>

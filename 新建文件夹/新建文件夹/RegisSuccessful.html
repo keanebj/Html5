@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+	    <meta http-equiv="x-ua-compatible" content="IE=edge, chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/common.css" />
+        <script src="js/jquery-1.7.2.min.js"></script>
+        <script src="js/jquery.cookie.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">	
+				<!--公共头部-->
+                <div class="container head">
+                  <a class="logo_a">
+                  	<img src="img/logo.png"/>
+                  </a>
+                  <button class="welcomeName LogOut"><a href="Login.html">LogOut</a></button>
+                   <span class="welcomeName">Welcome <span class="customerName"></span></span>                 
+            	</div>
+            	<!--进度条-->
+            	<div class="ProgressBar">
+            	    <ul>
+            	    	<li class="second_arr"><img src="img/writeArr.png"/>
+	                  		<span>1、Register Lenovo Account</span>
+	                    </li>
+	                  	<li class="second_arr">
+	                  		<span>
+	                  			2、Complete Personal Information</span>
+	                  	</li>
+	                  	<li><img class="SuccessImg" img src="img/34.png"/>
+	                  		<span class="threeSpan">3、Register successfully,start to enjoy the exclusive commercial services 
+	                  		</span>
+	                  	</li>
+                    </ul>
+            	</div>
+			   	<!--中间提示部分-->
+            <div class="container">
+                <div class="promptMessage">
+                    <img src="img/1.jpg" />
+                    <h5>Register successfully</h5>
+                    <p>An activation email has been sent to your mail address:<span id="sp_lenvovName"></span></p>
+                    <p>Please click the activation link in the email tp activate this account.</p>
+                </div>
+                <button class="btn"><a href="Home.html">Comfirm</a></button>
+            </div>
+            </div>
+				<!--底部-->
+				<div class="footer">
+					<p>Copyright 2008-2016 Lenovo.All rights reserved.Beijing ICP 11035381.Beijing Public Security No.110108007970. </p>
+					<p></p>
+				</div>
+		
+	</body>
+</html>
+<script language="javascript">
+    var customerEmail = $.cookie("email");
+    $(".customerName").text(customerEmail);
+</script>

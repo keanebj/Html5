@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- import Vue.js -->
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- import stylesheet -->
+		<link rel="stylesheet" href="css/iview.css">
+		<!-- import iView -->
+		<script src="js/iview.min.js"></script>
+		
+		<script src="js/resource.js"></script>
+		
+		<style type="text/css">
+			.wrap{
+				 max-width: 750px;
+   				 margin: 0 auto;
+			}
+			.main{
+				/*min-width: 650px;*/
+				min-height: 500px;
+    			border-bottom: 1px solid #ccc; 
+			}
+			.content_left{
+				display: flex;
+			}
+			
+			.content_left img{
+				width: 200px;
+				margin: 0 auto;
+				padding: 10px;
+			}
+			
+			.content{
+				display: flex;
+				margin: 0 auto;
+			}
+			
+			.contentItem{
+				flex: 1;
+			}
+			
+			.title{
+				text-align: center;
+			    margin: 30px;
+			    font-size: 32px;
+			}
+			
+			.submitBtn{
+				display: flex;
+			    flex-direction: column;
+			    align-content: center;
+			    justify-content: space-evenly;
+			    flex: 1;
+			}
+			
+			.footer{
+				position: fixed;
+    			bottom: 30px;
+    			margin: 0 30px;
+			}
+			
+			.footer_title{
+				line-height: 40px;
+				font-weight: bold;
+			}
+			
+			.ivu-input{
+				width: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			
+			<div class="main">
+				<div class="title">使用Q码优先进行QQ公众号注册</div>
+				<div class="content">
+					<div class="content_left contentItem">
+						<img src="../../echarts-2.2.7/doc/asset/img/about/echarts1.png"/>
+					</div>
+					<div class="submitBtn contentItem">
+						<div>请输入16位Q码</div>
+						<div><i-input v-model="Qcode" placeholder="请输入Q码"></i-input></div>
+						<div><i-button type="info" @click="getQcode()">使用Q码</i-button></div>
+					</div>
+				</div>				
+			</div>
+			
+			<div class="footer">
+				<div class="footer_title">
+					什么是Q码?
+				</div>
+				<div class="footer_content">
+					Q码是QQ公众号内测邀请码，使用Q码可以优先注册QQ公众号。如果您暂时还没有Q码，可先进行登记，即有机会获得Q码。
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el:".wrap",
+				data:function(){
+					return {
+						Qcode:""
+					}
+				},
+				created:function(){
+					
+				},
+				mounted:function(){},
+				methods:{
+					getQcode:function(){
+						this.$http.get("http://192.168.37.102:8080/transformData/user/invitation?code="+this.Qcode).then(function(res){
+							console.log(res)
+						})
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
