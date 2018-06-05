@@ -1,0 +1,39 @@
+
+{
+  "code":1,
+  "message":"成功",
+  "name":"时政经济", 
+	
+  "logoFile":"",
+  "intro":"",
+  "data":{
+			"columnId":"4",
+	"columnTitle":"时政经济",
+      "article":{
+        "articleId":"6294",
+        "tempStyle":null,
+        "shareImage":"",
+        "shareLink":"http://43.250.238.158/zgsjbcs/c/2018-05-16/6294.shtml",
+        "originLink":"http://43.250.238.158/zgsjbcs/c/2018-05-16/6294.shtml",
+        "title":"测试发视频",
+        "source":"中国审计报测试",
+        "author":"项目管理员",
+        "summary":"",
+        "publishTime":"2018-05-16 15:41:50",
+        "classname":null,
+        "classid":null,
+        "havefava":null,
+        "commentNum":null,
+        "body":{
+          "allphoto":null,
+          "newstext":"<p><div uetag='edui-video-embed' video-prefix='' video-videoname='movie.mp4' video-videoimagepath='http://43.250.238.158/zgsjbcs/upload/resources/video/2018/05/16/267.jpg' video-videourl='http://43.250.238.158/zgsjbcs/upload/resources/video/2018/05/16/267.mp4' width='480' height='360' videorela='267' id='video267'><!----><script src='/zgsjbcs/json/images/jwplayer.js'></script><script src='/zgsjbcs/json/images/jwplayer.html5.js'></script><script>(function(){var supportFlash=false;var swf;if('ActiveXObject' in window){try{swf=new ActiveXObject('ShockwaveFlash.ShockwaveFlash');supportFlash=swf?true:false;}catch(e){supportFlash=false;}}else if(navigator.plugins&&navigator.plugins.length){swf=navigator.plugins['Shockwave Flash'];supportFlash=swf?true:false;}var playerInstance=jwplayer('video267').setup({width:480,height:360,primary:supportFlash?'flash':'html5',image:'http://43.250.238.158/zgsjbcs/upload/resources/video/2018/05/16/267.jpg',title:'',sources:[{file:'http://43.250.238.158/zgsjbcs/upload/resources/video/2018/05/16/267.mp4'}]});})();</script><!----></div></p><div>movie.mp4</div><p>&nbsp;</p><p><br/></p>"
+         },
+        "videoLink":null,
+        "imageList":null,
+        "collectConfirm":null,
+        "publish":null
+	},
+    "comment":null,
+    "relative": null
+  }
+}

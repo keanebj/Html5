@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/vue.min.js" type="text/javascript"></script>
+	</head>
+	<body >
+		<div id="vue">{{name}}
+		
+			<input type="text" id="input" v-model="inputV" /><input type="button" value="添加" v-on:click="getName()">
+			<!--<ul id="list">
+				<li v-for="item in list">{{item}}</li>
+			</ul>-->
+			<ul>
+				<todo-item v-bind:content="item" v-for="item in list" @detele="detelList"></todo-item>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			Vue.component("todoItem",{
+				props:["content"],
+				template:"<li @click='handleDelete'>{{content}}<li>",
+				methods:{
+					handleDelete(){
+						this.$emit("detele")
+					}
+				}
+			})
+
+			var TodoItem={
+				props:["content"],
+				template:"<li @click='handleDelete'>{{content}}<li>",
+				methods:{
+					handleDelete(){
+						alert("naosdf")
+					}
+				}
+			}
+			var app =new Vue({
+				el:"#vue",
+				compontents:{
+					TodoItem:TodoItem
+				},
+				data(){
+					return{
+						name:"nioha",
+						list:["脑发"],
+						inputV:""
+					}
+				},
+				
+				created:function(){
+//					this.getName()
+				},
+				methods:{
+					detelList(){
+						this.list=[]
+					},
+					getName(){
+						console.log(this.inputV)
+						this.list.push(this.inputV)
+						this.inputV=""
+					}
+				}
+			})
+			
+			//直接调用vue  实例方法
+//			console.log(app.getName())
+			
+			
+//			function Page(){
+//				
+//			}
+			
+//			$.extend(Page.prototype,{
+//				init:function(){
+//					this.bindEvents()
+//				},
+//				bindEvents:function(){
+//					var btn=$("#btn");
+//					btn.on("click",$.proxy(this.handleBtnClick,this))
+//				},
+//				handleBtnClick:function(){
+//					var inputElement=$("#input");
+//					var inputV=inputElement.val();
+//					console.log(inputV)
+//					var ulList=$("#list")
+//					ulList.append("<li>"+inputV+"</li>")
+//					inputElement.val("")
+//				}
+//				
+//			})
+//			
+//			var page =new Page()
+//			page.init()
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<title></title>
+</head>
+<body>
+<script type="text/javascript">
+window.onload = function () {
+var videoPlayer = document.getElementById("video");
+videoPlayer.addEventListener("timeupdate", function () {
+     if(videoPlayer.currentTime>60){  //这里填入视频的最大时间
+          window.location.href="http://www.youkud.com";
+     }//if
+}, false);
+};
+</script>
+<div>
+<video id="video" src="http://flv4.people.com.cn/videofile3//pvmsvideo/2018/3/8/WangWeiTian_dbb97f9193f7a5f662234e36001c79b0_android_c.mp4"  preload="none" controls style="-webkit-transform: translate3d(0, 0, 0)" ondurationchange="durationChange()" width="450px" height="320px" autoplay="autoplay"></video>
+</div>
+</body>
+</html>

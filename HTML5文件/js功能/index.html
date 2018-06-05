@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/vue.min.js" type="text/javascript"></script>
+		<style type="text/css">
+			.list_item{
+				padding-bottom: 10px;
+				border-bottom: 1px solid red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="list_item">
+				<h2>测试去除字符串左右两边的空格   1</h2>
+				<input type="text" name="stringVal" id="stringVal" value="                  串左右两边的空格                                     " />
+				<input type="button" name="regString" id="regString" value="删除空格" />
+			</div>
+			<div class="list_item">
+				<h2>实时显示还可以输入多少字符（区分中英文）2</h2>
+				<input type="text" data-length='6' id='remainingCharacters' data-remainingCharacters="charActers1,charActers2" data-model='Ch' name="remainingCharacters" /><br />
+				<p>测试1：还可以输入<span class='remainingCharacters' id="charActers1">6</span>字符</p>
+				<p>测试2：还可以输入<span class='remainingCharacters' id="charActers2">6</span>字符</p>
+			</div>
+			
+			
+			
+		</div>
+
+		<script type="text/javascript">
+			window.onload = function() {
+
+				//1
+				var regStringBtn = document.getElementById("regString")
+				var stringVal = document.getElementById("stringVal")
+				regStringBtn.onclick = function() {
+					console.log(stringVal.value)
+					stringVal.value = stringVal.value.replace(/^(\s|\u00A0)+|(\s|\u00A0)+$/g, "")
+				}
+
+				//2
+				var forElementArr = function(_elementArr, callBack) { //遍历节点
+						var arr = _elementArr, //所有节点对象
+							self = this //外层环境
+						;
+						if(!(_elementArr instanceof Array)) { //如果不是数组，变成数组对象方便处理
+							arr = [_elementArr];
+							console.log(arr)
+						};
+						for(var i = 0, arrLen = arr.length; i < arrLen; i++) { //遍历数组
+							var arrI = arr[i];
+							if(typeof arrI == "string") { //判断是否为字符串
+								arrI = document.getElementById(arrI);
+							}
+							callBack && callBack(i, arrI); //如果存在回调则执行回调
+						}
+					},
+
+					//console.log(forElementArr)
+					showRemainingCharacters = function(_nums, _remainingCharacters) {
+						if(_remainingCharacters.search(",") != -1) {
+							_remainingCharacters = _remainingCharacters.split(","); //英文字符串分割
+						}
+						forElementArr(_remainingCharacters, function(_index, _this) {
+							_this.innerHTML = (_nums && _nums.toString()) || "0";
+						});
+					},
+
+					strLen = (function() { //统计中英文字符数
+						var trim = function(chars) {
+							return(chars || "").replace(/^(\s|\u00A0)+|(\s|\u00A0)+$/g, "");
+						}
+
+						return function(_str, _model) { //返回字符处理的函数
+							_str = trim(_str),
+								_model = _model || "Ch"; //默认为中文模式
+							var _strLen = _str.length; //获取字符长度
+							if(_strLen == 0) { //如果字符长度为0直接返回
+								return 0;
+							} else {
+								var chinese = _str.match(/[\u4e00-\u9fa5]/g); //匹配中文
+								return _strLen + (chinese && _model == "Ch" ? (chinese.length) : 0);
+							}
+						};
+					})(),
+					//获取限制对象
+					remainingCharacters = document.getElementById("remainingCharacters"),
+					clearNonumber = function(tThis) { //清除数字字符
+						console.log(tThis)
+						var _v = tThis.value,
+							_vLen = _v.length,
+							dataLength = tThis.getAttribute("data-length"),
+							remainingCharacters = tThis.getAttribute("data-remainingCharacters"); //如果有实时显示的属性，则在指定元素上显示
+
+						/*区分中英文前                if(_v.length > dataLength) tThis.value = _v.substr(0, dataLength);*/
+
+						var dataModel = tThis.getAttribute("data-model"); //区分中英文后
+						var subLen = dataLength;
+						if(dataModel == "Ch") { //如果为中文模式
+							_vLen = strLen(_v, dataModel); //获取长度
+							var vv = _v.match(/[\u4e00-\u9fa5]/g);
+							subLen = dataLength- (!vv ? 0 : vv.length);
+						}
+						if(_vLen > dataLength) tThis.value = _v.substr(0, subLen);
+						if(remainingCharacters) {
+							showRemainingCharacters(!_vLen ? dataLength : (_vLen > dataLength ? 0 : dataLength - _vLen), remainingCharacters);
+						}
+
+					};
+					remainingCharacters.onfocus = function() { //获取焦点
+						console.log(this)
+						clearNonumber(this);
+					}
+					remainingCharacters.onkeyup = function(val) { //键盘事件
+						console.log(val)
+						clearNonumber(this);
+					}
+					remainingCharacters.onblur = function(val) { //失去焦点
+						console.log(val)
+						clearNonumber(this);
+					}
+					
+					//3  
+
+			}
+		</script>
+
+	</body>
+
+</html>

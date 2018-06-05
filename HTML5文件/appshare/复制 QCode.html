@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<!-- import Vue.js -->
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- import stylesheet -->
+		<link rel="stylesheet" href="css/iview.css">
+		<!-- import iView -->
+		<script src="js/iview.min.js"></script>
+
+		<script src="js/resource.js"></script>
+
+		<style type="text/css">
+			.noactive {
+				color: #000000;
+			}
+			
+			.active {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class='nav' :style='{"width": navWidth + "px"}'>
+				<div class="switchBtn" :class='switchFlag ? "el-icon-d-arrow-left": "el-icon-d-arrow-right"' @click='switchNav(switchFlag)'></div>
+				<ul class='navBox' v-if="content">
+					<li v-for='(list,index) in navLists' :key='index'>
+						<div class="navFather clearfix" @click.stop='changeNav(0,index,0,list.path)' :class='[{"active": list.isActive}]'>
+							<i v-if="icon!=index" :class="{isActive: false}"><img :src="list.imgUrl">1</i>
+							<i v-if="icon==index" :class="{isActive: false}"><img :src="list.iconUrl">2</i>
+							<!-- <h5 v-show='switchFlag'>{{list.name}}</h5> -->
+							<h5 :class='{"disapear": !switchFlag}'>{{list.name}}</h5>
+							<span v-if='list.children.length != 0' :class='[{"el-icon-arrow-down": list.isShow},{"el-icon-arrow-right": !list.isShow},{"disapear": !switchFlag}]'></span>
+						</div>
+						<ul v-if='list.children.length != 0' v-show='list.isShow' style='height: auto;'>
+							<li v-for='(data,ind) in list.children' :key='ind' class='navSon' @click.stop='changeNav(1,index,ind,data.path)' :class='[{"active": data.isActive},{"disapear": !switchFlag}]'>
+								<h5 @click='toView(data.path)'>{{data.name}}</h5>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: ".wrap",
+				data: function() {
+					return {
+						navWidth: 200,
+						switchFlag: true,
+						content: true,
+						icon: '',
+						navLists: [{
+								name: "总览",
+								path: "/yw/general",
+								imgUrl: "/static/img/copy2x.png",
+								iconUrl: "/static/img/copy12x.png",
+								children: [],
+								isActive: false,
+								isShow: true
+							},
+							{
+								name: "报警",
+								path: "",
+								imgUrl: "/static/img/jingcopy@2x.png",
+								iconUrl: "/static/img/jinggao.png",
+								isActive: false,
+								isShow: true,
+								children: [{
+										name: "AI报警",
+										path: "/yw/aiAlert",
+										isActive: false
+									},
+									{
+										name: "站端报警",
+										path: "/yw/stationAlert",
+										isActive: false
+									}
+								]
+							},
+							{
+								name: "运行",
+								path: "",
+								imgUrl: "/static/img/yunxing1 (1).png",
+								iconUrl: "/static/img/yunxing2.png",
+								isActive: false,
+								isShow: true,
+								children: [{
+										name: "能效",
+										path: "/yw/nengxiao",
+										isActive: false
+									},
+									{
+										name: "实时能流",
+										path: "/yw/nengliu",
+										isActive: false
+									},
+									{
+										name: "产耗能",
+										path: "/yw/chanhaoneng",
+										isActive: false
+									}
+								]
+							},
+							{
+								name: "设备",
+								path: "/yw/equipment",
+								imgUrl: "/static/img/Shape Copy@2x.png",
+								iconUrl: "/static/img/Shape@2x.png",
+								children: [],
+								isActive: false,
+								isShow: true
+							},
+							{
+								name: "单站",
+								path: "/yw/stationlists",
+								imgUrl: "/static/img/dd.png",
+								iconUrl: "/static/img/dd1.png",
+								children: [],
+								isActive: false,
+								isShow: true
+							},
+							{
+								name: "设置",
+								path: "",
+								imgUrl: "/static/img/shezhi (1).png",
+								iconUrl: "/static/img/shezhi (2).png",
+								isActive: false,
+								isShow: true,
+								children: [{
+										name: "报警分级",
+										path: "/yw/baojingfenji",
+										isActive: false
+									},
+									{
+										name: "报警分流",
+										path: "/yw/baojingfenliu",
+										isActive: false
+									},
+									{
+										name: "诊断分流",
+										path: "/yw/zhenduanfenliu",
+										isActive: false
+									}
+								]
+							},
+							{
+								name: "自定义指标",
+								path: "/yw/customnorm",
+								imgUrl: "",
+								iconUrl: "",
+								children: [],
+								isActive: false,
+								isShow: true
+							},
+							{
+								name: "物联数据",
+								path: "/yw/instrumented",
+								imgUrl: "",
+								iconUrl: "",
+								children: [],
+								isActive: false,
+								isShow: true
+							},
+							{
+								name: "拓扑能量流",
+								path: "/yw/tuopunengliangliu",
+								imgUrl: "",
+								iconUrl: "",
+								children: [],
+								isActive: false,
+								isShow: true
+							}
+						]
+					};
+				},
+				created: function() {
+
+				},
+				mounted: function() {},
+				methods: {
+
+					toView(path, index) {
+						this.isShow = index;
+
+						if(path != '') {
+							this.$router.push(path)
+						}
+					},
+					toViewt(data, index) {
+						console.log(data, index);
+						data.IsActive = !data.IsActive
+						this.Noactive = !this.Noactive
+						this.isActive = !this.isActive
+					},
+					toView() {},
+					changeNav(flag, index, ind, path) {
+						this.icon = index;
+						if(path != "") {
+							this.$router.push(path);
+						}
+						this.serilize(this.navLists);
+						this.$router.push(path);
+						if(flag == 0) {
+							this.navLists[index].isShow = !this.navLists[index].isShow;
+							this.navLists[index].isActive = true;
+						} else if(flag == 1) {
+							if(typeof ind == "number") {
+								this.navLists[index].children[ind].isActive = true;
+							}
+						}
+					},
+					switchNav(flag) {
+						if(flag) {
+							this.navWidth = 15;
+						} else {
+							this.navWidth = 200;
+						}
+						this.switchFlag = !this.switchFlag;
+						this.content = !this.content;
+					},
+					serilize(arr, path) {
+						let that = this;
+						arr.forEach(function(data, index) {
+							if(path == data.path) {
+								data.isActive = true;
+							} else {
+								data.isActive = false;
+							}
+							if(data.children && data.children.length != 0) {
+								that.serilize(data.children);
+							}
+						});
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

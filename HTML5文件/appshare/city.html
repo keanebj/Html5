@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body>
+		<select id="one">
+			<option>请输入省份</option>
+		</select>
+		<select id="two">
+			<option>请输入市</option>
+		</select>
+		<select id="three">
+			<option>请输入区</option>
+		</select>
+		
+		
+		<div class="citySelect" style="margin-top: 30px;border: 1px solid #0000FF;">
+			<select name="" id="province">
+				<option value="">请输入省份</option>
+			</select>
+			
+			<select name="" id="city">
+				<option value="">请输入市</option>
+			</select>
+			
+			<select name="" id="area">
+				<option value="">请输入区</option>
+			</select>
+		</div>
+		
+		<script type="text/javascript">
+			var oone = document.getElementById("one");
+			var otwo = document.getElementById("two");
+			var three = document.getElementById("three");
+			var str = '<option>请输入省</option>';
+			otwo.disabled = true;
+			three.disabled = true;
+			var arr1 = [{
+				"id": "1",
+				"value": "北京"
+			}, {
+				"id": "2",
+				"value": "上海"
+			}, {
+				"id": "3",
+				"value": "重庆"
+			}, {
+				"id": "4",
+				"value": "天津"
+			}, {
+				"id": "5",
+				"value": "山东"
+			}];
+			for(var i = 0; i < arr1.length; i++) {
+				str += "<option value=" + arr1[i].id + ">" + arr1[i].value + "</option>"
+			}
+			oone.innerHTML = str;
+			var arr2 = {
+				'1': ['101@北京'],
+				'2': ['201@上海'],
+				'3': ['301@重庆'],
+				'4': ['401@天津'],
+				'5': ['501@济南', '502@青岛','505@大雁']
+			};
+			oone.onchange = function() {
+				
+				var val = this.value;
+				var arrA = arr2[val];
+				console.log(this.value,arrA)
+				var str1 = '<option>请输入市</option>';
+				for(var j = 0; j < arrA.length; j++) {
+					var aaa = arrA[j].split('@');
+					console.log(aaa)
+					str1 += "<option value=" + aaa[0] + ">" + aaa[1] + "</option>"
+				}
+				otwo.innerHTML = str1;
+				otwo.disabled = false;
+				three.innerHTML = '<option>请输入区</option>';
+				three.disabled = 'disabled';
+			}
+			var arr3 = {
+				'101': ['朝阳区', '昌平区'],
+				'201': ['宝山区', '浦东区'],
+				'301': ['不知道'],
+				'401': ['真的不知道'],
+				'501': ['市中区', '历下区', '槐荫区'],
+				'502': ['市南区', '市北区', '崂山区']
+			};
+			otwo.onchange = function() {
+				var val = this.value;
+				console.log(this.value);
+				var str2 = '<option>请输入区</option>';
+				console.log(val)
+				for(var l = 0; l < arr3[val].length; l++) {
+					str2 += "<option >" + arr3[val][l] + "</option>"
+				}
+				three.innerHTML = str2;
+				three.disabled = false;
+			}
+		
+			
+			
+			var province=document.getElementById("province");
+			var city=document.getElementById("city");
+			var area=document.getElementById("area");
+			var arrZ=[
+			{
+				"id":"1",
+				"name":"北京"
+			},
+			{
+				"id":"2",
+				"name":"上海"
+			},
+			{
+				"id":"3",
+				"name":"河南省"
+			},
+			{
+				"id":"4",
+				"name":"河北市"
+			},
+			{
+				"id":"5",
+				"name":"湖北省"
+			},
+			{
+				"id":"6",
+				"name":"湖南省"
+			}]
+			
+			var arrO={
+				"1":["001@北京"],
+				"2":["002@上海"],
+				"3":["003@河南"],
+				"4":["004@河北"],
+				"5":["005@湖北"],
+				"6":["006@湖南"]
+			}
+			
+			var arrT={
+				"001":["昌平区","海淀区","朝阳区","大兴区","通州"],
+				"002":["宝山","青浦区","松江区","嘉定区"],
+				"003":["郑州","周口","焦作","濮阳","驻马店"],
+				"004":["邯郸","衡水","保定","石家庄"],
+				"005":["武汉","襄阳","荆州","宜昌"],
+				"006":["长沙","衡阳","同仁"],
+				
+			}
+			var strZ="<option>请输入省</option>"
+			
+			
+			
+			city.disabled = true;
+			area.disabled = true;
+			
+			for (var i=0; i<arrZ.length;i++) {
+				strZ+="<option  value="+arrZ[i].id+">"+arrZ[i].name+"</option>"
+			}
+			province.innerHTML=strZ
+			
+			province.onchange=function(){
+				var val=this.value
+				console.log(this.value)
+				var cityArr=arrO[val]
+				console.log(cityArr)
+				var strO="<option>请输入市</option>"
+				for (var i=0; i<cityArr.length;i++) {
+					var aa=cityArr[i].split("@")
+					console.log(aa)
+					strO+="<option  value="+aa[0]+">"+aa[1]+"</option>"
+				}
+				city.innerHTML=strO
+				area.innerHTML="<option>请输入区</option>"
+				city.disabled=false
+				area.disabled=true
+			}
+			
+			city.onchange=function(){
+				var val=this.value
+				console.log(this.value)
+				var areaArr=arrT[val]
+				console.log(areaArr)
+				var strT="<option>请输入区</option>"
+				for (var i=0; i<areaArr.length;i++) {
+					strT+="<option >"+areaArr[i]+"</option>"
+				}
+				area.innerHTML=strT
+				area.disabled=false
+			}
+			
+		
+		</script>
+	</body>
+
+</html>

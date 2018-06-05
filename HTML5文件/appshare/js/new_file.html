@@ -1,0 +1,79 @@
+
+			<Tabs>
+				<TabPane label="手机登录">
+					<Form :model="formItem" ref="mobileValidate">
+						<FormItem class="login-input">
+							<Input placeholder="手机号"></Input>
+						</FormItem>
+						<FormItem class="login-input phone-identify">
+							<Input placeholder="手机验证码" style="width:calc(100% - 100px)">
+							</Input>
+							<a href="javascript:void(0);" class="login-pos">获取验证码</a>
+						</FormItem>
+						<FormItem class="login-identify" prop="verifycode">
+							<Row>
+								<Col span="14">
+								<Input v-model="accountForm.verifycode" placeholder="验证码" @on-enter="handleSubmit('mobileValidate')"></Input>
+								</Col>
+								<Col span="10" class="p-l-10">
+								<div class="verify-code-div"><img :src="verifyCode" @click="changeCode" /></span>
+								</div>
+								</Col>
+							</Row>
+						</FormItem>
+						<Row class="form-extra">
+							<Col span="12">
+							<Checkbox>记住账号</Checkbox>
+							</Col>
+							<Col span="12" style="text-align:right">
+							<span @click="logintype = 'account'" class="hand-shape">邮箱登录</span>
+							</Col>
+						</Row>
+						<div style="text-align: center;margin-top:25px;margin-bottom:28px;" class="login-btn">
+							<Button type="ghost" shape="circle" :loading="isLoading" class="btns">登录</Button>
+						</div>
+					</Form>
+				</TabPane>
+				<TabPane label="账号登录">
+					<Form ref="accountValidate" :model="accountForm" :rules="accountRuleValidate">
+						<FormItem class="login-input" prop="username">
+							<Input placeholder="用户名/邮箱" v-model="accountForm.username" @on-enter="handleSubmit('accountValidate')"></Input>
+						</FormItem>
+						<FormItem class="login-input" prop="password">
+							<Input v-model="accountForm.password" type="password" placeholder="输入密码" @on-enter="handleSubmit('accountValidate')">
+							</Input>
+						</FormItem>
+						<FormItem class="login-identify" prop="verifycode">
+							<Row>
+								<Col span="14">
+								<Input v-model="accountForm.verifycode" placeholder="验证码" @on-enter="handleSubmit('accountValidate')"></Input>
+								</Col>
+								<Col span="10" class="p-l-10">
+								<div class="verify-code-div"><img :src="verifyCode" @click="changeCode" /></span>
+								</div>
+								</Col>
+							</Row>
+						</FormItem>
+						<Row class="form-extra">
+							<Col span="12">
+							<Checkbox v-model="accountForm.remember">记住账号</Checkbox>
+							</Col>
+							<Col span="12" style="text-align:right">
+							<!--<span @click="logintype = 'mobile'" class="hand-shape">手机登录</span>-->
+							</Col>
+						</Row>
+						<Row class="login-button">
+							<Col span="24">
+							<div style="text-align: center;" class="login-btn">
+								<Button type="ghost" shape="circle" :loading="isLoading" class="btns" @click="handleSubmit('accountValidate')">登录</Button>
+							</div>
+							</Col>
+						</Row>
+						<!--<Row>
+            <Col span="24">
+            <div style="text-align: center;"><a href="javascript:void(0)">忘记密码</a></div>
+            </Col>
+          </Row>-->
+					</Form>
+				</TabPane>
+			</Tabs>

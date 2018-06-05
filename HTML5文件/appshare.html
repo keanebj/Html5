@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta http-equiv="cache-control" content="max-age=0" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<title id="title"></title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/appshare.css" />
+
+		<style type="text/css">
+			.ar_img img {
+				width: 100%;
+				height: 100px;
+			}
+			
+			.showall {
+				/*padding: 10px;*/
+				height: 60px;
+				overflow: hidden;
+				clear: both;
+				margin-top: 6px
+			}
+			
+			.showall.active {
+				background: #fff;
+				/* min-height: 150px; */
+				height: auto;
+			}
+			
+			.imgbtn {
+				position: relative;
+				display: block;
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				color: #E6C8C8;
+				text-align: center;
+				border-top: 1px solid #ccc;
+				margin-top: 10px;
+				/* margin-bottom: 10px; */
+			}
+			
+			.imgbtn::before {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 60px;
+				/* border: 1px solid red; */
+				background-image: linear-gradient(-180deg, rgba(255, 255, 255, 0.00) 1%, #FFFFFF 100%);
+				bottom: 40px;
+				left: 0;
+			}
+			
+			.imgbtn h6 {
+				position: relative;
+				font-size: 12px;
+				background-color: white;
+			}
+			
+			.imgbtn h6:after {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 12px;
+				height: 12px;
+				border-left: 1px solid #E6C8C8;
+				border-bottom: 1px solid #E6C8C8;
+				transform: rotate(-45deg);
+				-webkit-transform: rotate(-45deg);
+				top: 10px;
+				left: 50%;
+				margin-left: -60px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script src="js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.0"></script>
+
+		<div id="wrap">
+			<div class="header">
+				<!-- <span class="headerImg"><img src="img/headlogo.png" /></span> -->
+				<span class="downHref"><a :href="downloadUrl">立即打开</a></span>
+			</div>
+
+			<!-- 视频文件 -->
+			<div v-if="contentType=='Video'" v-if="dataTrue">
+
+				<div class="main" v-if="dataTrue">
+					<div :class="{mian_video:dataTrue}" v-if="videourl">
+						<video id="playId" width="100%" ref="playId" height="180" :src="videourl" :poster="posterUrl" autoplay="autoplay">
+						</video>
+						<!--<div :class="{video_back:dataTrue}"><img :src="playB" @click="playBtn"></div>-->
+						<div class="dlapp">
+							<a :href="downloadUrl">获取最新资讯，欢迎您下载新版客户端 &gt;&gt;</a>
+						</div>
+					</div>
+
+					<div class="add mainadd">
+						<div class="title" v-text="title"></div>
+						<div class="mainaddcon">
+							<div class="count_list">
+								<!-- <dl>
+									<dt><img :src="studioavatar" onerror="this.src='img/logo.png'" class="logo_img"/></dt>
+									<dd v-text="studioname"></dd>
+								</dl> -->
+
+								<!--<dl>
+									<dt class="img_top"><img src="../../assets/preview/play.png" class="logo_img logo_item"/></dt>
+									<dd>{{playNum}}播放</dd>
+								</dl>-->
+								<!--<dl v-if="commentTotal==0">
+									<dt :class="{img_top:commentTotal!==0}"><img src="img/comment.png" class="logo_img logo_item"/></dt>
+									<dd v-if="commentNum" v-text="commentNum" class="commentNum" style="margin-left: 0px;"></dd>
+								</dl>-->
+								<!--<span><img src=""/>{{columnid || 0}}条评论</span>-->
+								<!-- </div><span style="color: #BBBEC4; margin: 0 5px 0 -5px;">|</span> -->
+								<div class="time" v-text="dateTime"></div>
+							</div>
+						</div>
+
+						<div class="ar_contentA" v-if="videoSummary">
+							<!--<div class="ar_address">人民网</div>
+						<div class="ar_img"><img src="img/footer.png" /></div>
+
+						<div class="ar_fromAddress">头条新闻</div>-->
+							<!--:class="{showall:true,active:showall}"-->
+							<div class="ar_content" :class="{showall:true,active:showall}" v-html="videoSummary"></div>
+							<div class="mui-text-center imgbtn" v-show="!showall">
+								<h6 @click="showall=!showall">展开查看全文</h6></div>
+
+						</div>
+
+						<div class="ar_comment" v-if="commentTotal!==0">
+							<div class="hot_com"><span class="hotImg"><img src="images/icon_comment.png"/></span><span class="hotTitle">评论</span><span class="hotTitleNum" v-text="commentTotal+'条'"></span></div>
+							<ul class="comment_list list_item" v-for="item in commentList">
+								<li class="com_head">
+									<span class="head_logo">
+									<img :src="item.portrait_url==''? headLogo :item.portrait_url" />
+								</span>
+								</li>
+								<li class="comment_content">
+									<div class="peolpe_name" v-text="item.user_name"></div>
+									<!--<div class="people_address">
+									北京市朝阳区
+								</div>-->
+									<div class="com_cont" v-text="item.content"></div>
+									<div class="com_createdtime" v-text="timestampToTime(parseInt(item.ctime))"></div>
+								</li>
+							</ul>
+						</div>
+						<div :class="{more_comment:commentTotal!==0, video_comment:commentTotal!==0}" class="img_more_comment" v-if="commentTotal!==0">
+							<div class="more_href">
+								<a :href="downloadUrl"><img src="images/@3xdownload-icon.png" /> 下载人民视频，参与更多评论</a>
+							</div>
+						</div>
+
+						<div class="RelatedLinks" v-if="relativet"><img src="images/icon_video.png" />
+							<p>更多视频</p>
+						</div>
+						<ul class="list">
+							<li v-for="item in relativet" class="list_item">
+								<a :href="item.shareLink">
+									<div class="list_right">
+										<img :src="item.shareImage" />
+										<span class="playIcon"><img src="img/pIcon.png"/></span>
+										<span class="list_time" v-text="item.duration"></span>
+									</div>
+									<div class="list_left">
+										<div class="list_title" v-text="item.title">
+										</div>
+										<div class="address_playcount">
+											<span class="address" v-text="item.publish.name"></span>
+											<!--<span class="address">{{item.playNum==0 ? "统计中":item.playNum}}播放量</span>-->
+											<span style="color: #BBBEC4; margin: 0 5px 0 -15px;">|</span>
+											<span class="address" v-text="item.publishTimeRex"></span>
+										</div>
+									</div>
+								</a>
+							</li>
+							<!--<div v-if="!relativet">
+							暂无更多数据
+						</div>-->
+						</ul>
+
+					</div>
+
+					<!--<div v-if="!dataTrue" class="dataNo">
+						<span><img src="img/Group6.svg"/></span>
+					</div>-->
+
+					<!--<div class="footer">
+
+			</div>-->
+
+				</div>
+			</div>
+			<!-- 文章文件 -->
+			<div v-else-if="contentType=='Article'" class="article">
+				<div class="ar_main" v-if="articleContent">
+					<div class="ar_title" v-text="title"></div>
+					<div class="ar_subtitle">
+						<div class="ar_subItem subRight">
+							<!-- <span class="addressItem" v-text="studioname"></span> -->
+							<!-- <span style="color: #BBBEC4; margin: 0 5px 0 0px;">|</span> -->
+							<span v-text="publishTime"></span>
+							<!--<span>浏览量76.6万</span>-->
+						</div>
+						<!--<div class="ar_subItem subLeft">
+							<dl class="dlitem">
+								<dt><img src="img/comment.png"/></dt>
+								<dd>382</dd>
+							</dl>
+							<dl class="dlitem">
+								<dt><img src="img/comment.png"/></dt>
+								<dd>1829</dd>
+							</dl>
+						</div>-->
+					</div>
+
+					<div class="ar_contentA">
+						<!--<div class="ar_address">人民网</div>
+						<div class="ar_img"><img src="img/footer.png" /></div>
+
+						<div class="ar_fromAddress">头条新闻</div>-->
+						<!--:class="{showall:true,active:showall}"-->
+						<div class="ar_content" v-html="articleContent"></div>
+						<!-- <div class="mui-text-center imgbtn"><img src='img/showall.png' /><h6 @click="showall=!showall">展开查看全文</h6></div> -->
+
+					</div>
+
+					<div class="ar_comment" v-if="commentTotal!=0">
+						<div class="hot_com"><span class="hotImg"><img src="images/commentY.png"/></span><span class="hotTitle">评论</span><span class="hotTitleNum" v-text="commentTotal+'条'"></span></div>
+						<ul class="comment_list list_item" v-for="item in commentList">
+							<li class="com_head">
+								<span class="head_logo">
+										<img :src="item.portrait_url==''? headLogo :item.portrait_url" />
+									</span>
+							</li>
+							<li class="comment_content">
+								<div class="peolpe_name" v-text="item.user_name"></div>
+								<!--<div class="people_address">
+										北京市朝阳区
+									</div>-->
+								<div class="com_cont" v-text="item.content"></div>
+								<div class="com_createdtime" v-text="timestampToTime(parseInt(item.ctime))"></div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="more_comment img_more_comment" v-if="commentTotal!==0" v-if="articleContent">
+					<div class="more_href">
+						<a :href="downloadUrl"><img src="images/@3xdownload-icon.png" />  下载人民视频，参与评论</a>
+					</div>
+				</div>
+				<!--<div v-if="!articleContent" class="dataNo">
+					<span><img src="img/Group6.svg"/></span>
+				</div>-->
+
+			</div>
+
+			<!-- 图集文件 -->
+			<div v-else-if="contentType=='Image'" class="Images">
+				<div class="img_main" v-if="imagesList">
+					<div class="ar_title" v-text="title"></div>
+					<div class="ar_subtitle">
+						<div class="ar_subItem subRight">
+							<!-- <span class="addressItem" v-text="studioname"></span> -->
+							<!-- <span style="color: #BBBEC4; margin: 0 5px 0 0px;">|</span> -->
+							<span class="timeItem" v-text="publishTime"></span>
+							<!--<span>浏览量76.6万</span>-->
+						</div>
+						<!--<div class="ar_subItem subLeft">
+							<dl class="dlitem">
+								<dt><img src="img/comment.png"/></dt>
+								<dd>382</dd>
+							</dl>
+							<dl class="dlitem">
+								<dt><img src="img/comment.png"/></dt>
+								<dd>1829</dd>
+							</dl>
+						</div>-->
+					</div>
+
+					<div class="img_content">
+						<div class="img_list" v-for="item in imagesList">
+							<div class="img_item"><img :src="item.imageFile" /></div>
+							<div class="img_cont" v-text="item.summary"></div>
+						</div>
+
+						<div class="ar_comment" v-if="commentTotal!==0">
+							<div class="hot_com"><span class="hotImg"><img src="images/commentY.png"/></span><span class="hotTitle">评论</span><span class="hotTitleNum" v-text="commentTotal+'条'"></span></div>
+							<ul class="comment_list list_item" v-for="item in commentList">
+								<li class="com_head">
+									<span class="head_logo">
+										<img :src="item.portrait_url==''? headLogo :item.portrait_url" />
+									</span>
+								</li>
+								<li class="comment_content">
+									<div class="peolpe_name" v-text="item.user_name"></div>
+									<!--<div class="people_address">
+										北京市朝阳区
+									</div>-->
+									<div class="com_cont" v-text="item.content"></div>
+									<div class="com_createdtime" v-text="timestampToTime(parseInt(item.ctime))"></div>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="more_comment  img_more_comment" v-if="commentTotal!==0" v-if="imagesList">
+					<div class="more_href">
+						<a :href="downloadUrl"><img src="images/@3xdownload-icon.png" /> 打开人民视频，参与评论</a>
+					</div>
+
+				</div>
+				<div v-if="!imagesList" class="dataNo">
+					<span><img src="img/Group6.svg"/></span>
+				</div>
+
+			</div>
+
+			<div class="download" v-if="shareBtnShow">
+				<span class="downItem downtitle"><a :href="downloadUrl" target="_blank"><img src="images/share_bottom.png"/></a></span>
+				<!-- <span class="del"><img src="img/del.svg" @click="delfun"/></span> -->
+				<span class="btn"><a :href="downloadUrl"><img src="images/share_bottom_btn.png" alt=""/></a></span>
+			</div>
+
+		</div>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script src="js/appshare.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
