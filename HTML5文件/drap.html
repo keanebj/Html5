@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<style type="text/css">
+			#div1,
+			#div2 ,#div3,#div4{
+				float: left;
+				width: 500px;
+				height: 300px;
+				margin: 10px;
+				padding: 10px;
+				border: 1px solid #aaaaaa;
+			}
+			
+			
+			#div1 span#drag1{
+				padding: 10px;
+				display: inline-block;
+				background: blue;
+			}
+			
+			#div1 span#drag3{
+				padding: 10px;
+				display: inline-block;
+				background: blue;
+			}
+			
+			#div1 span#drag2{
+				padding: 10px;
+				display: inline-block;
+				background: yellow;
+			}
+			
+			
+			
+			
+			
+			#div1 span#drag4{
+				padding: 10px;
+				display: inline-block;
+				background: yellow;
+			}
+			
+			#div1 span#drag5{
+				padding: 10px;
+				display: inline-block;
+				background: red;
+			}
+			
+			#div1 span#drag6{
+				padding: 10px;
+				display: inline-block;
+				background: red;
+			}
+			
+			
+			#div2>span{
+				padding: 5px;
+				display: block;
+				background: blue;
+			}
+			
+			#div3>span{
+				padding: 5px;
+				display: block;
+				background: yellow;
+			}
+			
+			#div4>span{
+				padding: 5px;
+				display: block;
+				background: red;
+			}
+		</style>
+		<script type="text/javascript">
+			function allowDrop(ev) {
+				ev.preventDefault();
+			}
+
+			function drag(ev) {
+				console.log(ev, ev.target.id)
+				ev.dataTransfer.setData("Text", ev.target.id);
+			}
+
+			function drop(ev) {
+				
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("Text");
+				if(ev.srcElement.tagName=="DIV"){
+					ev.target.appendChild(document.getElementById(data));
+				}else{
+					return
+				}
+				
+				console.log(ev)
+				console.log(data,)
+			}
+			function drop1(ev) {
+				var arr1=["drag1","drag3"]
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("Text");
+				if(ev.srcElement.tagName=="DIV" && arr1.indexOf(data)!==-1 ){
+					ev.target.appendChild(document.getElementById(data));
+				}else{
+					return
+				}
+				
+				console.log(ev)
+				console.log(data,arr1.indexOf(data))
+			}
+			function drop2(ev) {
+				var arr2=["drag2","drag4"]
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("Text");
+				if(ev.srcElement.tagName=="DIV" && arr2.indexOf(data)!==-1 ){
+					ev.target.appendChild(document.getElementById(data));
+				}else{
+					return
+				}
+				
+				console.log(ev)
+				console.log(data)
+			}
+			
+			function drop3(ev) {
+				var arr3=["drag5","drag6"]
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("Text");
+				if(ev.srcElement.tagName=="DIV" && arr3.indexOf(data) !==-1 ){
+					ev.target.appendChild(document.getElementById(data));
+				}else{
+					return
+				}
+				
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<span draggable="true"  ondragstart="drag(event)" id="drag1" />11111</span>
+			<span draggable="true"  ondragstart="drag(event)" id="drag2" />22222</span>
+			<span draggable="true"  ondragstart="drag(event)" id="drag3" />33333333333</span>
+			<span draggable="true"  ondragstart="drag(event)" id="drag4" />444444</span>
+			<span draggable="true"  ondragstart="drag(event)" id="drag5" />5555555555</span>
+			<span draggable="true"  ondragstart="drag(event)" id="drag6" />666666666</span>
+			<!--
+				<img src="appshare/img/setTimeout.svg" draggable="true"   ondragstart="drag(event)" id="drag1" />
+				<img src="appshare/img/setTimeout.svg" draggable="true"   ondragstart="drag(event)" id="drag2" />
+			<img src="appshare/img/setTimeout.svg" draggable="true"   ondragstart="drag(event)" id="drag3" />
+			<img src="appshare/img/setTimeout.svg" draggable="true"   ondragstart="drag(event)" id="drag4" />
+			<img src="appshare/img/setTimeout.svg" draggable="true"   ondragstart="drag(event)" id="drag5" />
+			<img src="appshare/img/setTimeout.svg" draggable="true"   ondragstart="drag(event)" id="drag6" />-->
+		</div>
+		<div id="div2" ondrop="drop1(event)" ondragover="allowDrop(event)">
+			存放1-3
+		</div>
+		
+		<div id="div3" ondrop="drop2(event)" ondragover="allowDrop(event)">
+			存放2-4
+		</div>
+		
+		<div id="div4" ondrop="drop3(event)" ondragover="allowDrop(event)">
+			存放5-6
+		</div>
+
+	</body>
+
+</html>

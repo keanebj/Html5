@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>事件冒泡</title>
+        <script src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/vue.min.js"></script>
+
+        <style type="text/css">
+            .red{
+                color:red; 
+            }
+
+            .yy{
+                color:yellow;
+            }
+            .red.yy{
+                color:green
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">  
+            {{msg}}
+            <input type="text" v-model="inputv"/>
+
+            <div @click="handleClick1">
+                <!-- <button @click.stop="handleClick()">提交</button> -->
+                <button @click="handleClick($event)">提交</button>
+            </div>
+
+            <button @keydown="keyEvent($event)">键盘事件</button>
+                
+              <div :class="[red,yy]">显示颜色</div>  
+
+               <div :style="style">显示颜色</div>  
+        </div>
+            <script >
+                var app=new Vue({
+                    el:"#wrap",
+                    data(){
+                        return{
+                            msg:"nihao",
+                            inputv:"事件冒泡" ,  
+                            red:"red",
+                            yy:"yy",  
+                            style:{
+                                color:"orange",
+                            }
+                        }
+                       
+                    },
+                    created(){
+
+                    },
+                    methods:{
+
+                        handleClick1(){
+                            alert("最外层事件")
+                        },
+
+                        handleClick(ev){
+                            // ev.cancelBubble=false
+                            alert("最内层事件")
+                        },
+                        keyEvent(ev){
+                            
+                            if(ev.keyCode==13){
+                                alert("你按了回车")
+                            }
+                        }
+                    }
+                })
+            </script>
+    </body>
+</html>
